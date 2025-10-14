@@ -1,0 +1,193 @@
+:root {
+  --primary-gold: #d4af37;
+}
+
+.hero {
+  background-color: #fff1f2;
+  padding-top: 80px;
+}
+
+@media (min-width: 768px) {
+  .hero {
+    padding-top: 96px;
+  }
+}
+
+.hero-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  padding: 24px;
+  gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .hero-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.hero-text h2 {
+  font-size: 2.25rem;
+  font-weight: bold;
+  color: var(--primary-gold);
+  margin-bottom: 16px;
+}
+
+.hero-text p {
+  color: #374151;
+  margin-bottom: 24px;
+}
+
+.hero-text button {
+  align-items: center;
+  background-color: var(--primary-gold);
+  color: white;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.hero-text button:hover {
+  background-color: #8d6605f3;
+}
+
+.hero-image {
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image img {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+}
+
+.hero {
+  padding-top: 80px;
+}
+
+.hero-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  padding: 24px;
+}
+
+.hero-text h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary-gold);
+  margin-bottom: 16px;
+}
+
+.hero-text p {
+  margin-bottom: 24px;
+  color: #555;
+}
+
+.hero-text button {
+  background-color: var(--primary-gold);
+  color: white;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.hero-text button:hover {
+  background-color: var(--primary-gold-dark);
+}
+
+.hero-image img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 768px) {
+  .hero-container {
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hero-text h2 {
+    font-size: 2.5rem;
+  }
+}
+
+.categories {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  margin: 15px 0;
+  flex-wrap: wrap;
+}
+
+.cat-btn {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.cat-btn:hover {
+  transform: scale(1.1);
+}
+
+.cat-btn.men {
+  background: #007bff;
+  color: white;
+}
+
+.cat-btn.shirt {
+  background: #28a745;
+  color: white;
+}
+
+.cat-btn.tshirt {
+  background: #ff5722;
+  color: white;
+}
+
+.cat-btn.jeans {
+  background: #6f42c1;
+  color: white;
+}
+
+.cat-btn.women {
+  background: #e83e8c;
+  color: white;
+}
+
+.cat-btn.kids {
+  background: #ffc107;
+  color: black;
+}
+
+.cat-btn {
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cat-btn:hover {
+  transform: scale(1.05);
+}
+
+.hero .slider-container {
+  max-width: 1200px;
+  margin: auto;
+}

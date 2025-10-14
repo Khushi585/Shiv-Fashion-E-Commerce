@@ -1,0 +1,1238 @@
+/* General Styles */
+:root {
+    --primary-font: 'Poppins', sans-serif;
+    --secondary-font: 'Playfair Display', serif;
+    --text-color: #333;
+    --light-text-color: #666;
+    --background-color: #f7f7f7;
+    --white-color: #fff;
+    --border-color: #eee;
+    --button-bg: #444;
+    --button-text: #fff;
+    --star-color: #ffd700;
+}
+
+/* Import Google Fonts - Add these to your HTML <head> or at the top of CSS */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--primary-font);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    overflow-x: hidden;
+}
+
+/* Added for mobile menu: Prevent body scroll when menu is open */
+body.no-scroll {
+    overflow: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+ul {
+    list-style: none;
+}
+
+h1,
+h2 {
+    font-family: var(--secondary-font);
+    margin-bottom: 15px;
+    color: var(--text-color);
+}
+
+h1 {
+    font-size: 3.5em;
+    line-height: 1.1;
+}
+
+h2 {
+    font-size: 2.5em;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.subtitle {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px auto;
+    color: var(--light-text-color);
+    line-height: 1.8;
+}
+
+/* Announcement Bar */
+.announcement-bar {
+    background-color: #f0f0f0;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.9em;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+    z-index: 10;
+    /* Ensure it's above other content but below fixed header */
+}
+
+.announcement-bar .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+
+.announcement-bar .arrow-btn {
+    background: none;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    color: var(--text-color);
+    padding: 5px;
+}
+
+/* General Header and Navbar Styles */
+.main-header {
+    background-color: var(--white-color);
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+    position: relative;
+    /* Needed for z-index of mobile menu */
+    z-index: 100;
+    /* Ensure header is on top */
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    /* For logo absolute positioning on desktop */
+}
+
+.nav-left,
+.nav-right {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    /* Default spacing for desktop */
+}
+
+.navbar li a {
+    font-weight: 500;
+    transition: color 0.3s ease;
+    padding: 5px 0;
+    /* Add padding for better click area */
+    display: block;
+    /* Make padding effective */
+}
+
+.navbar li a:hover {
+    color: #888;
+}
+
+.logo {
+    position: absolute;
+    /* Absolute position for logo on desktop */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    /* Ensure logo is above other nav elements */
+}
+
+.logo img {
+    height: 60px;
+    vertical-align: middle;
+}
+
+/* Dropdown Menu (Desktop) */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: var(--white-color);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    border-top: 3px solid var(--button-bg);
+    padding: 10px 0;
+    left: 0;
+    top: 100%;
+    /* Ensure dropdown is below parent */
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Hamburger Menu (Hidden by default on desktop) */
+.hamburger-menu {
+    display: none;
+    font-size: 1.8em;
+    cursor: pointer;
+    z-index: 110;
+    /* Ensure hamburger is above everything */
+    color: var(--text-color);
+    /* Default color */
+    padding: 5px;
+}
+
+/* --- Responsive Adjustments --- */
+
+/* For smaller desktops and tablets (e.g., 992px and below) */
+@media (max-width: 992px) {
+
+    .nav-left,
+    .nav-right {
+        gap: 20px;
+    }
+
+    .navbar li a {
+        font-size: 0.95em;
+    }
+
+    .logo img {
+        height: 50px;
+        /* Slightly smaller logo */
+    }
+}
+
+/* For tablets and larger mobile devices (e.g., 768px and below) */
+@media (max-width: 768px) {
+    .main-header {
+        padding: 10px 0;
+    }
+
+    .navbar {
+        justify-content: space-between;
+        /* Reset for mobile flow */
+        padding: 0 20px;
+        /* Add padding to navbar itself */
+    }
+
+    .logo {
+        position: static;
+        /* Remove absolute positioning for mobile */
+        transform: none;
+        order: 2;
+        /* Position logo in the center of the navbar flex */
+        margin: 0 auto;
+        /* Center it horizontally within its order */
+    }
+
+    .logo img {
+        height: 50px;
+    }
+
+    /* Hide desktop nav by default */
+    .nav-left,
+    .nav-right {
+        display: none;
+        /* Hidden by default on mobile */
+    }
+
+    .hamburger-menu {
+        display: block;
+        /* Show hamburger menu */
+        order: 3;
+        /* Position hamburger on the right */
+    }
+
+    /* Mobile Navigation (when .main-header has .nav-open class) */
+    .main-header.nav-open {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--white-color);
+        z-index: 100;
+        /* Ensure it covers everything */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        overflow-y: auto;
+        /* Allow scrolling for long menus */
+        padding-top: 20px;
+        /* Space from top */
+    }
+
+    .main-header.nav-open .navbar {
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px 15px 20px;
+        /* Padding for the sticky mobile header */
+        background-color: var(--white-color);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        /* Keep this part visible at the very top */
+        top: 0;
+        z-index: 105;
+        /* Above other menu items */
+    }
+
+    .main-header.nav-open .logo {
+        order: 1;
+        /* Logo to the left when menu is open */
+        margin-right: auto;
+        /* Pushes hamburger to the right */
+        margin-left: 0;
+    }
+
+    /* Hamburger icon change to 'X' when menu is open */
+    .main-header.nav-open .hamburger-icon.fa-bars:before {
+        content: "\f00d";
+        /* Unicode for fa-times (X icon) */
+    }
+
+    .main-header.nav-open .nav-left,
+    .main-header.nav-open .nav-right {
+        display: flex;
+        /* Show navigation items when nav-open is active */
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+        /* Adjust spacing from the sticky navbar part */
+        gap: 0;
+        /* Remove gap for stacked menu items */
+        padding: 0 20px;
+        /* Add horizontal padding to the menu items container */
+    }
+
+    .main-header.nav-open .nav-left li,
+    .main-header.nav-open .nav-right li {
+        width: 100%;
+        border-bottom: 1px solid var(--border-color);
+        margin-bottom: 0;
+        /* No margin between li for clean border */
+    }
+
+    /* Remove bottom border for the last item in each nav group */
+    .main-header.nav-open .nav-left li:last-child,
+    .main-header.nav-open .nav-right li:last-child {
+        border-bottom: none;
+    }
+
+    .main-header.nav-open .nav-left li a,
+    .main-header.nav-open .nav-right li a {
+        padding: 15px 0;
+        display: block;
+        width: 100%;
+        font-size: 1.1em;
+    }
+
+    /* Mobile Dropdown Specifics (when menu is open) */
+    .main-header.nav-open .dropdown {
+        width: 100%;
+        /* Make dropdown container full width */
+    }
+
+    .main-header.nav-open .dropdown>a {
+        /* Target the main dropdown link (e.g., 'Collections') */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 15px 0;
+    }
+
+    .main-header.nav-open .dropdown>a i {
+        /* Adjust dropdown arrow icon */
+        margin-left: 10px;
+        transition: transform 0.3s ease;
+    }
+
+    /* Rotate dropdown arrow when dropdown is active */
+    .main-header.nav-open .dropdown.active>a i {
+        transform: rotate(180deg);
+    }
+
+    .main-header.nav-open .dropdown-content {
+        position: static;
+        /* Remove absolute positioning for mobile */
+        display: none;
+        /* Hidden by default, toggled by JS */
+        width: 100%;
+        box-shadow: none;
+        border-top: none;
+        padding: 0;
+        background-color: #f8f8f8;
+        /* Slight background for sub-items */
+    }
+
+    /* Show dropdown content when parent dropdown is active */
+    .main-header.nav-open .dropdown.active .dropdown-content {
+        display: block;
+        /* Show when 'active' class is added by JS */
+    }
+
+    .main-header.nav-open .dropdown-content a {
+        padding: 10px 0 10px 40px;
+        /* Indent dropdown sub-items */
+        font-size: 1em;
+        text-align: left;
+        border-bottom: 1px dashed var(--border-color);
+        /* Dotted line for sub-items */
+    }
+
+    .main-header.nav-open .dropdown-content li:last-child a {
+        border-bottom: none;
+        /* No border on last sub-item */
+    }
+
+    /* Adjust padding for social icons or other elements that might appear at the end of nav-right */
+    .main-header.nav-open .nav-right .social-icons {
+        margin-top: 20px;
+        justify-content: center;
+    }
+}
+
+/* For very small mobile devices (e.g., 480px and below) */
+@media (max-width: 480px) {
+
+    .main-header.nav-open .nav-left,
+    .main-header.nav-open .nav-right {
+        padding: 0 15px;
+        /* Slightly less padding for smaller screens */
+    }
+
+    .main-header.nav-open .nav-left li a,
+    .main-header.nav-open .nav-right li a {
+        font-size: 1em;
+        /* Adjust font size if needed */
+    }
+}
+
+/* Prevent body scroll when menu is open */
+body.no-scroll {
+    overflow: hidden;
+    height: 100vh;
+    /* Also helps in preventing scroll on iOS */
+}
+
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    background: url('https://via.placeholder.com/1600x700?text=Hero+Background+Image') no-repeat center center/cover;
+    color: var(--white-color);
+    padding: 150px 0;
+    text-align: left;
+    height: 700px;
+    display: flex;
+    align-items: center;
+    transition: background-image 0.5s ease-in-out;
+    /* Smooth transition for hero images */
+}
+
+.hero-section .container {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.hero-content {
+    max-width: 500px;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.hero-content h1 {
+    color: var(--white-color);
+    margin-bottom: 20px;
+    font-size: 3.8em;
+}
+
+.hero-content p {
+    font-size: 1.1em;
+    line-height: 1.7;
+    color: #e0e0e0;
+}
+
+.hero-arrow {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: var(--white-color);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.hero-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.hero-arrow.left-arrow {
+    left: 20px;
+}
+
+.hero-arrow.right-arrow {
+    right: 20px;
+}
+
+/* Good Morning Section */
+.good-morning-section {
+    padding: 80px 0;
+}
+
+/* Categories Section */
+.categories-section {
+    padding: 50px 0;
+    background-color: var(--background-color);
+}
+
+.category-grid {
+    display: grid;
+    /* Default to 2 columns for tablet sizes */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* For larger screens (desktops), force 4 columns */
+@media (min-width: 1024px) {
+    .category-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.category-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.category-item img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.category-item:hover img {
+    transform: scale(1.05);
+}
+
+.category-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    color: var(--white-color);
+    padding: 20px;
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+/* New Arrivals Section */
+.new-arrivals-section {
+    padding: 80px 0;
+    background-color: var(--white-color);
+}
+
+.product-carousel {
+    position: relative;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-cards {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 10px 0;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.product-cards::-webkit-scrollbar {
+    display: none;
+}
+
+.product-cards {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.product-card {
+    flex: 0 0 auto;
+    width: 280px;
+    background-color: var(--white-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    scroll-snap-align: start;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    max-width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.product-name {
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: 1.1em;
+}
+
+.product-price {
+    color: var(--light-text-color);
+    font-size: 1em;
+    margin-bottom: 15px;
+}
+
+.add-to-cart-btn,
+.choose-option-btn {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+}
+
+.choose-option-btn {
+    background-color: transparent;
+    color: var(--button-bg);
+    border: 1px solid var(--button-bg);
+}
+
+.add-to-cart-btn:hover,
+.choose-option-btn:hover {
+    background-color: #555;
+    transform: translateY(-2px);
+}
+
+.choose-option-btn:hover {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+}
+
+.product-carousel .carousel-arrow {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: var(--white-color);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    transition: background-color 0.3s ease;
+}
+
+.product-carousel .carousel-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.product-carousel .carousel-arrow.left-arrow {
+    left: 0px;
+}
+
+.product-carousel .carousel-arrow.right-arrow {
+    right: 0px;
+}
+
+/* Hot Products Section */
+.hot-products-section {
+    padding: 80px 0;
+    background-color: var(--background-color);
+}
+
+.hot-products-section .container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: var(--white-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.hot-products-image {
+    flex: 1;
+    min-width: 400px;
+}
+
+.hot-products-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.hot-products-content {
+    flex: 1;
+    padding: 40px;
+}
+
+.hot-products-content h2 {
+    text-align: left;
+    margin-top: 0;
+}
+
+.hot-products-content p {
+    margin-bottom: 30px;
+    line-height: 1.7;
+    color: var(--light-text-color);
+}
+
+.shop-now-btn {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.shop-now-btn i {
+    margin-right: 10px;
+}
+
+.shop-now-btn:hover {
+    background-color: #555;
+    transform: translateY(-2px);
+}
+
+/* Customer Reviews Section */
+.customer-reviews-section {
+    padding: 80px 0;
+    background-color: var(--white-color);
+}
+
+.reviews-carousel {
+    position: relative;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.review-cards {
+    display: flex;
+    gap: 30px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 10px 0;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+.review-cards::-webkit-scrollbar {
+    display: none;
+}
+
+.review-cards {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.review-card {
+    flex: 0 0 auto;
+    width: 350px;
+    background-color: var(--white-color);
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center;
+    scroll-snap-align: center;
+}
+
+.review-card .stars {
+    color: var(--star-color);
+    font-size: 1.2em;
+    margin-bottom: 15px;
+}
+
+.review-card p:not(.reviewer-name):not(.reviewer-location) {
+    font-style: italic;
+    margin-bottom: 20px;
+    color: var(--light-text-color);
+    line-height: 1.7;
+}
+
+.reviewer-name {
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.reviewer-location {
+    font-size: 0.9em;
+    color: var(--light-text-color);
+}
+
+.reviews-carousel .carousel-arrow {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: var(--white-color);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1em;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    transition: background-color 0.3s ease;
+}
+
+.reviews-carousel .carousel-arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.reviews-carousel .carousel-arrow.left-arrow {
+    left: 0px;
+}
+
+.reviews-carousel .carousel-arrow.right-arrow {
+    right: 0px;
+}
+
+/* Newsletter Section */
+.newsletter-section {
+    padding: 80px 0;
+    background-color: var(--background-color);
+}
+
+.newsletter-section .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--white-color);
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.newsletter-content h2 {
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.newsletter-content p {
+    max-width: 400px;
+    color: var(--light-text-color);
+    line-height: 1.7;
+}
+
+.newsletter-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.newsletter-form input[type="email"] {
+    padding: 15px 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    width: 300px;
+    margin-bottom: 15px;
+    font-size: 1em;
+}
+
+.newsletter-form button {
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    width: 300px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.newsletter-form button:hover {
+    background-color: #555;
+    transform: translateY(-2px);
+}
+
+.newsletter-form .privacy-note {
+    font-size: 0.85em;
+    color: var(--light-text-color);
+    margin-top: 10px;
+}
+
+.newsletter-form .privacy-note a {
+    color: var(--button-bg);
+    text-decoration: underline;
+}
+
+/* Footer */
+.main-footer {
+    background-color: var(--text-color);
+    color: #f0f0f0;
+    padding: 60px 0;
+    font-size: 0.95em;
+}
+
+.main-footer .container {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 200px;
+}
+
+.footer-col .logo {
+    margin-bottom: 20px;
+}
+
+.footer-col .logo img {
+    filter: brightness(0) invert(1);
+}
+
+.footer-col p {
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: #ccc;
+}
+
+.footer-col h3 {
+    color: var(--white-color);
+    margin-bottom: 25px;
+    font-size: 1.3em;
+    font-family: var(--secondary-font);
+}
+
+.footer-col ul {
+    padding-left: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    color: #ccc;
+    transition: color 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+    color: var(--white-color);
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-icons a {
+    color: var(--white-color);
+    font-size: 1.2em;
+    width: 35px;
+    height: 35px;
+    border: 1px solid var(--white-color);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: var(--white-color);
+    color: var(--text-color);
+}
+
+
+/* --- Responsive Design --- */
+
+/* For tablets and smaller desktops (992px and below) */
+@media (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 3em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    .hot-products-section .container {
+        flex-direction: column;
+        text-align: center;
+        padding: 0;
+    }
+
+    .hot-products-image,
+    .hot-products-content {
+        min-width: unset;
+        width: 100%;
+    }
+
+    .hot-products-content {
+        padding: 30px;
+    }
+
+    .hot-products-content h2 {
+        text-align: center;
+    }
+
+    .newsletter-section .container {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+    }
+
+    .newsletter-content h2 {
+        text-align: center;
+    }
+
+    .newsletter-form {
+        align-items: center;
+        width: 100%;
+    }
+
+    .newsletter-form input[type="email"],
+    .newsletter-form button {
+        max-width: 400px;
+        width: 100%;
+    }
+
+    .main-footer .container {
+        justify-content: center;
+        text-align: center;
+    }
+
+    .footer-col {
+        min-width: unset;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .footer-col:last-child {
+        margin-bottom: 0;
+    }
+
+    .footer-col ul {
+        text-align: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+    }
+}
+
+/* For tablets and larger mobile devices (768px and below) */
+@media (max-width: 768px) {
+    .announcement-bar .container {
+        justify-content: space-between;
+        padding: 0 10px;
+    }
+
+    .announcement-bar span {
+        flex-grow: 1;
+        padding: 0 10px;
+    }
+
+    /* Hide desktop nav links and show hamburger */
+    .main-header .nav-left,
+    .main-header .nav-right {
+        display: none;
+    }
+
+    .main-header .hamburger-menu {
+        display: block;
+        /* Show hamburger */
+        margin-left: auto;
+        /* Push to right */
+    }
+
+    .navbar {
+        justify-content: space-between;
+        padding: 15px 20px;
+    }
+
+    .navbar .logo {
+        position: static;
+        /* Reset logo position */
+        transform: none;
+        order: 1;
+        /* Place logo on left */
+    }
+
+    .hero-section {
+        height: 500px;
+        padding: 100px 0;
+        text-align: center;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+
+    .hero-content p {
+        font-size: 0.9em;
+    }
+
+    .hero-arrow.left-arrow {
+        left: 10px;
+    }
+
+    .hero-arrow.right-arrow {
+        right: 10px;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    .subtitle {
+        font-size: 0.9em;
+        margin-bottom: 30px;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 columns for smaller tablets */
+    }
+
+    .product-carousel .carousel-arrow,
+    .reviews-carousel .carousel-arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9em;
+    }
+
+    .product-carousel .carousel-arrow.left-arrow,
+    .reviews-carousel .carousel-arrow.left-arrow {
+        left: 5px;
+    }
+
+    .product-carousel .carousel-arrow.right-arrow,
+    .reviews-carousel .carousel-arrow.right-arrow {
+        right: 5px;
+    }
+
+    .review-card {
+        width: 100%;
+        max-width: 350px;
+        margin: 0 auto;
+    }
+
+    .newsletter-section .container {
+        padding: 30px 20px;
+    }
+}
+
+/* For small mobile devices (480px and below) */
+@media (max-width: 480px) {
+    .announcement-bar span {
+        font-size: 0.8em;
+    }
+
+    .hero-content h1 {
+        font-size: 2em;
+    }
+
+    .hero-content p {
+        font-size: 0.8em;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr;
+        /* Single column for mobile */
+    }
+
+    .product-card {
+        width: 250px;
+    }
+
+    .newsletter-form input[type="email"],
+    .newsletter-form button {
+        max-width: 280px;
+    }
+
+    .main-footer .container {
+        padding: 0 15px;
+    }
+}
